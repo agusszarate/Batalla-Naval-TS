@@ -1,20 +1,20 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "package.json",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    { 
-      "src": "/socket.io/(.*)",
-      "dest": "/dist/server/server.js"
-    },
-    { 
-      "src": "/(.*)",
-      "dest": "/dist/client/$1"
-    }
-  ],
-  "outputDirectory": "dist/client"
+    "version": 2,
+    "builds": [
+        {
+            "src": "package.json",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/socket.io/(.*)",
+            "dest": "/dist/server/server.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/dist/client/$1"
+        }
+    ],
+    "outputDirectory": "dist/client"
 }
