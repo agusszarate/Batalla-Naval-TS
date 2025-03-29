@@ -8,11 +8,30 @@ import { GameManager } from './game-manager'
 // Configurar servidor express
 const app = express()
 const server = http.createServer(app)
-const io = new Server(server)
+const io = new Server(server, {
+    cors: {
+        origin: '*',
+        methods: ['GET', 'POST'],
+    },
+})
 
 // Servir archivos estáticos
 const clientPath = path.join(__dirname, '../client')
 app.use(express.static(clientPath))
+
+// Ruta API de verificación
+app.get('/api/health', (req, res) => {
+    res.json({ status: 'ok', message: 'Server is running' })
+})
+
+// Servir index.html para todas las rutas que no son API ni archivos estáticos
+// Esto es necesario para aplicaciones SPA en Vercel
+app.get('*', (req, res) => {
+    // Excluir rutas de API y socket.io
+    if (!req.path.startsWith('/api/') && !req.path.startsWith('/socket.io/')) {
+        res.sendFile(path.join(clientPath, 'index.html'))
+    }
+})
 
 // Puerto del servidor
 const PORT = process.env.PORT || 3000
@@ -165,3 +184,6 @@ io.on('connection', (socket: Socket) => {
 server.listen(PORT, () => {
     console.log(`Servidor ejecutándose en http://localhost:${PORT}`)
 })
+
+// Exportar para serverless
+export { app, server }
