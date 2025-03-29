@@ -1,81 +1,81 @@
-# Batalla Naval - Juego multijugador
+# Battleship - Multiplayer Game
 
-Un juego de Batalla Naval (Battleship) multijugador implementado con TypeScript, Socket.IO y Express.
+A multiplayer Battleship game implemented with TypeScript, Socket.IO, and Express.
 
-## Características
+## Features
 
--   Interfaz de usuario intuitiva para colocar barcos y jugar
--   Sistema de salas para partidas privadas
--   Comunicación en tiempo real mediante Socket.IO
--   Implementado completamente en TypeScript
+-   Intuitive user interface for placing ships and playing
+-   Room system for private matches
+-   Real-time communication using Socket.IO
+-   Fully implemented in TypeScript
 
-## Barcos disponibles
+## Available Ships
 
--   Portaaviones (5 casillas)
--   Acorazado (4 casillas)
--   Crucero (3 casillas)
--   Submarino (3 casillas)
--   Destructor (2 casillas)
+-   Aircraft Carrier (5 cells)
+-   Battleship (4 cells)
+-   Cruiser (3 cells)
+-   Submarine (3 cells)
+-   Destroyer (2 cells)
 
-## Requisitos
+## Requirements
 
--   Node.js (v14 o superior)
+-   Node.js (v14 or higher)
 -   npm
 
-## Instalación
+## Installation
 
-1. Clona el repositorio:
+1. Clone the repository:
 
 ```bash
-git clone <url-del-repositorio>
+git clone <repository-url>
 cd batalla-naval-ts
 ```
 
-2. Instala las dependencias:
+2. Install dependencies:
 
 ```bash
 npm install
 ```
 
-## Ejecución
+## Running the Game
 
-Para ejecutar el juego en modo desarrollo:
+To run the game in development mode:
 
 ```bash
 npm run dev
 ```
 
-Para construir y ejecutar en producción:
+To build and run in production:
 
 ```bash
 npm run build
 npm start
 ```
 
-El servidor estará disponible en http://localhost:3000
+The server will be available at http://localhost:3000
 
-## Cómo jugar
+## How to Play
 
-1. Abre la aplicación en tu navegador
-2. Introduce tu nombre y crea una nueva sala o únete a una existente con un código
-3. Cuando haya dos jugadores, inicia la partida
-4. Coloca tus barcos en el tablero (puedes usar el botón "Rotar barco" para cambiar la orientación)
-5. Ataca el tablero enemigo por turnos
-6. El primer jugador en hundir todos los barcos del oponente gana
+1. Open the application in your browser
+2. Enter your name and create a new room or join an existing one with a code
+3. When there are two players, start the game
+4. Place your ships on the board (you can use the "Rotate ship" button to change orientation)
+5. Attack the enemy board taking turns
+6. The first player to sink all of the opponent's ships wins
 
-## Estructura del proyecto
+## Project Structure
 
 ```
 ├── src/
-│   ├── client/          # Código cliente
-│   │   ├── public/      # Archivos estáticos (HTML, CSS)
-│   │   └── index.ts     # Punto de entrada del cliente
-│   ├── server/          # Código servidor
-│   │   ├── server.ts    # Configuración del servidor Express y Socket.IO
-│   │   └── game-manager.ts  # Lógica del juego
-│   └── shared/          # Código compartido
-│       └── types.ts     # Interfaces y tipos compartidos
-├── dist/                # Código compilado (generado)
+│   ├── client/          # Client code
+│   │   ├── public/      # Static files (HTML, CSS)
+│   │   └── index.ts     # Client entry point
+│   ├── server/          # Server code
+│   │   ├── server.ts    # Express and Socket.IO server configuration
+│   │   └── game-manager.ts  # Game logic
+│   └── shared/          # Shared code
+│       └── types.ts     # Shared interfaces and types
+├── dist/                # Compiled code (generated)
 ├── package.json
 └── tsconfig.json
 ```
