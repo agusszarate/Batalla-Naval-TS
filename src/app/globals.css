@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgb(var(--background-end-rgb))
+  )
+  rgb(var(--background-start-rgb));
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Game specific styles */
+.game-board-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.ship-selection-item {
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.ship-selection-item:hover {
+  background-color: rgba(24, 144, 255, 0.1);
+}
+
+.ship-selection-item.active {
+  background-color: rgba(24, 144, 255, 0.2);
+  border-left: 3px solid #1890ff;
+}
+
+/* Animation for hits and explosions */
+@keyframes explosion {
+  0% { transform: scale(0); opacity: 1; }
+  70% { transform: scale(1.5); opacity: 0.7; }
+  100% { transform: scale(2); opacity: 0; }
+}
+
+.explosion {
+  position: absolute;
+  pointer-events: none;
+  animation: explosion 0.8s ease-out forwards;
+}
+
+/* Smooth transitions for game states */
+.fade-enter {
+  opacity: 0;
+}
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
